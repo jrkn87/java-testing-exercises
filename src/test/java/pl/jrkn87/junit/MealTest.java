@@ -1,12 +1,8 @@
 package pl.jrkn87.junit;
 
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.Test;
-
-<<<<<<< HEAD
-=======
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
->>>>>>> 8ad6534... Add assertj lib.
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MealTest {
@@ -21,13 +17,9 @@ class MealTest {
 
         //then
         assertEquals(28, discountedPrice);
-<<<<<<< HEAD
-=======
-        /* hamcrest lib */
-        //assertThat(discountedPrice, equalTo(28));
-        /* assertj lib */
-        assertThat(discountedPrice).isEqualTo(28);
->>>>>>> 8ad6534... Add assertj lib.
+
+        /* hamcrest */
+        assertThat(discountedPrice, equalTo(28));
     }
 
     @Test
@@ -38,13 +30,9 @@ class MealTest {
 
         //then
         assertSame(meal1, meal2);
-<<<<<<< HEAD
-=======
+
         /* hamcrest */
-        //assertThat(meal1, sameInstance(meal2));
-        /* assertj lib */
-        assertThat(meal1).isSameAs(meal2);
->>>>>>> 8ad6534... Add assertj lib.
+        assertThat(meal1, sameInstance(meal2));
     }
 
     @Test
@@ -55,13 +43,9 @@ class MealTest {
 
         //then
         assertNotSame(meal1, meal2);
-<<<<<<< HEAD
-=======
+
         /* hamcrest */
-        //assertThat(meal1, not(sameInstance(meal2)));
-        /* assertj lib */
-        assertThat(meal1).isNotSameAs(meal2);
->>>>>>> 8ad6534... Add assertj lib.
+        assertThat(meal1, not(sameInstance(meal2)));
     }
 
     @Test
@@ -72,7 +56,7 @@ class MealTest {
 
         //then
         assertEquals(meal1, meal2);
-        /* assertj lib */
-        assertThat(meal1).isEqualTo(meal2);
+        /* harmcrest */
+        assertThat(meal1, equalTo(meal2));
     }
 }
