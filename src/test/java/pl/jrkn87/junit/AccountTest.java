@@ -2,6 +2,10 @@ package pl.jrkn87.junit;
 
 import org.junit.jupiter.api.Test;
 
+<<<<<<< HEAD
+=======
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+>>>>>>> 8ad6534... Add assertj lib.
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
@@ -15,6 +19,14 @@ class AccountTest {
 
         //then
         assertFalse(isActive);
+<<<<<<< HEAD
+=======
+        /* hamcrest lib */
+        //assertThat(isActive, equalTo(false));
+        //assertThat(isActive, is(false));
+        /* assertj lib */
+        assertThat(isActive).isFalse();
+>>>>>>> 8ad6534... Add assertj lib.
     }
 
     @Test
@@ -28,6 +40,13 @@ class AccountTest {
 
         //then
         assertTrue(isActive);
+<<<<<<< HEAD
+=======
+        /* hamcrest */
+        //assertThat(isActive, equalTo(true));
+        /* assertj lib */
+        assertThat(isActive).isTrue();
+>>>>>>> 8ad6534... Add assertj lib.
     }
 
     @Test
@@ -40,6 +59,13 @@ class AccountTest {
 
         //then
         assertNull(givenAddress);
+<<<<<<< HEAD
+=======
+        /* hamcrest */
+        //assertThat(givenAddress, nullValue());
+        /* assertj lib */
+        assertThat(givenAddress).isNull();
+>>>>>>> 8ad6534... Add assertj lib.
     }
 
     @Test
@@ -54,5 +80,12 @@ class AccountTest {
 
         //then
         assertNotNull(givenAddress);
+<<<<<<< HEAD
+=======
+        /* hamcrest */
+        //assertThat(givenAddress, notNullValue());
+        /* assertj lib */
+        assertThat(givenAddress).isNotNull();
+>>>>>>> 8ad6534... Add assertj lib.
     }
 }
