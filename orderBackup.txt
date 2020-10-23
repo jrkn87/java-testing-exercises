@@ -1,0 +1,1 @@
+2020-10-23 : Order{meals=[Meal{price=7, name='Fries'}]}

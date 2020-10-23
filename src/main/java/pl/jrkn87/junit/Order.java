@@ -21,4 +21,11 @@ public class Order {
     public void clearOrder() {
         this.meals.clear();
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "meals=" + meals +
+                '}';
+    }
 }

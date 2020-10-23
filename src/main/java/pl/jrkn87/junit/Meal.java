@@ -6,8 +6,6 @@ public class Meal {
     private int price;
     private String name;
 
-    public Meal() {}
-
     public Meal(int price) {
         this.price = price;
     }
@@ -35,5 +33,13 @@ public class Meal {
     @Override
     public int hashCode() {
         return Objects.hash(price, name);
+    }
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "price=" + price +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
