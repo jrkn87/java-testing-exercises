@@ -59,4 +59,13 @@ class MealTest {
         /* harmcrest */
         assertThat(meal1, equalTo(meal2));
     }
+
+    @Test
+    void exceptionShouldBeThrownIfDiscountIsHigherThanThePrice() {
+        //given
+        Meal meal = new Meal(39, "Soup");
+
+        //then
+        assertThrows(IllegalArgumentException.class, () -> meal.getDiscountedPrice(40));
+    }
 }

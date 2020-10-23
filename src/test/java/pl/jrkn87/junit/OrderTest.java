@@ -1,5 +1,7 @@
 package pl.jrkn87.junit;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -10,6 +12,19 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderTest {
+    private Order order;
+
+    @BeforeEach
+    void initOrder() {
+        //System.out.println("Init");
+        order = new Order();
+    }
+
+    @AfterEach
+    void clearOrder() {
+        //System.out.println("Clear");
+        order.clearOrder();
+    }
 
     @Test
     void testAssertArrayEquals() {
@@ -38,7 +53,7 @@ class OrderTest {
     @Test
     void newlyOrderMealsShouldBeEmpty() {
         //given
-        Order order = new Order();
+        // @BeforeEach Order order = new Order();
 
         //then
         assertThat(order.getMeals(), empty());
@@ -50,7 +65,7 @@ class OrderTest {
     @Test
     void addingMealToOrderShouldIncreaseOrderSize() {
         //given
-        Order order = new Order();
+        // @BeforeEach Order order = new Order();
         Meal meal = new Meal(19, "Pizza");
 
         //when
@@ -65,7 +80,7 @@ class OrderTest {
     @Test
     void removingMealFromOrderShouldDecreaseOrderSize() {
         //given
-        Order order = new Order();
+        // @BeforeEach Order order = new Order();
         Meal meal = new Meal(21, "Pizza");
 
         //when
@@ -80,7 +95,7 @@ class OrderTest {
     @Test
     void mealsShouldBeInCorrectOrderAfterAddingTheOrder() {
         //given
-        Order order = new Order();
+        // @BeforeEach Order order = new Order();
         Meal meal = new Meal(19, "Pizza");
         Meal meal1 = new Meal(21, "Sandwich");
 
