@@ -1,9 +1,11 @@
 package pl.jrkn87.junit;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 class AccountTest {
     @Test
@@ -69,5 +71,21 @@ class AccountTest {
 
         /* hamcrest */
         assertThat(givenAddress, notNullValue());
+    }
+
+    @RepeatedTest(5)
+    void newlyAccountWithSetAddressShouldBeActive() {
+        //given
+        Address address = new Address("Marsa", "21");
+
+        //when
+        Account account = new Account(address);
+
+        //then
+        assertAll(
+                () -> assumingThat(account.getAddress() != null, () -> assertTrue(account.isActive())),
+                () -> assertThat(account.getAddress(), notNullValue())
+        );
+
     }
 }

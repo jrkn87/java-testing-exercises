@@ -8,6 +8,14 @@ public class Account {
         this.active = false;
     }
 
+    public Account(Address address) {
+        this.address = address;
+        if (address != null)
+            activation();
+        else
+            this.active = false;
+    }
+
     public void activation() {
         this.active = true;
     }
