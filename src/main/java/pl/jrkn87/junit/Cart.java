@@ -24,4 +24,8 @@ public class Cart {
         System.out.println("Cart size: " + orders.size());
         clearCart();
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
 }
