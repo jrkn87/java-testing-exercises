@@ -2,6 +2,7 @@ package pl.jrkn87.junit;
 
 import com.sun.xml.internal.bind.v2.runtime.SwaRefAdapterMarker;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -82,6 +83,15 @@ class MealTest {
     @ParameterizedTest
     @ValueSource(ints = {5, 15, 10, 19})
     void priceShouldBeLessThan20(int price) {
+        assertThat(price, lessThan(20));
+    }
+
+    @ExtendWith(IAExceptionHandlerExtension.class)
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5, 8})
+    void priceShouldBeLessThan10(int price) {
+        if (price > 5)
+            throw new IllegalArgumentException();
         assertThat(price, lessThan(20));
     }
 
