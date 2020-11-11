@@ -2,6 +2,7 @@ package pl.jrkn87.junit;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -38,6 +39,7 @@ class OrderTest {
         assertArrayEquals(ints, ints1);
     }
 
+    @Tag(value = "pizza")
     @Test
     void testIfTwoMealListAreTheSame() {
         //given
@@ -64,6 +66,7 @@ class OrderTest {
         assertThat(order.getMeals(), emptyCollectionOf(Meal.class));
     }
 
+    @Tag(value = "pizza")
     @Test
     void addingMealToOrderShouldIncreaseOrderSize() {
         //given
@@ -79,6 +82,7 @@ class OrderTest {
         assertThat(order.getMeals(), hasItem(meal));
     }
 
+    @Tag(value = "pizza")
     @Test
     void removingMealFromOrderShouldDecreaseOrderSize() {
         //given
@@ -94,6 +98,7 @@ class OrderTest {
         assertThat(order.getMeals(), not(contains(meal)));
     }
 
+    @Tag(value = "pizza")
     @Test
     void mealsShouldBeInCorrectOrderAfterAddingTheOrder() {
         //given

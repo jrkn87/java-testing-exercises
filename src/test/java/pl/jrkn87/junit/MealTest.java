@@ -1,14 +1,19 @@
 package pl.jrkn87.junit;
 
-import com.sun.xml.internal.bind.v2.runtime.SwaRefAdapterMarker;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -120,5 +125,31 @@ class MealTest {
     private static Stream<String> stringArguments() {
         List<String> cakes = Arrays.asList("Chocolate cake", "Pie cake", "Cup cake");
         return cakes.stream();
+    }
+
+    @Tag(value = "pizza")
+    @TestFactory
+    Collection<DynamicTest> calculateMealPrices() {
+        Order order = new Order();
+        order.addMealToOrder(new Meal(10, 2, "Hamburger"));
+        order.addMealToOrder(new Meal(6, 5, "Fries"));
+        order.addMealToOrder(new Meal(20, 2, "Pizza"));
+
+        Collection<DynamicTest> dynamicTests = new ArrayList<>(0);
+
+        for (int i = 0; i < order.getMeals().size(); i++) {
+            int price = order.getMeals().get(1).getPrice();
+            int quantity = order.getMeals().get(1).getQuantity();
+
+            String nameTest = "Dynamic test no : " + i;
+            Executable executable = () -> assertThat(calculatePrice(price, quantity), lessThan(66));
+            DynamicTest dynamicTest = DynamicTest.dynamicTest(nameTest, executable);
+            dynamicTests.add(dynamicTest);
+        }
+        return dynamicTests;
+    }
+
+    private int calculatePrice(int price, int quantity) {
+        return price + quantity;
     }
 }
