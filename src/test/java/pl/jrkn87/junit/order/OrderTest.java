@@ -1,10 +1,13 @@
-package pl.jrkn87.junit;
+package pl.jrkn87.junit.order;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import pl.jrkn87.junit.Meal;
+import pl.jrkn87.junit.extension.BeforeAfterExtension;
+import pl.jrkn87.junit.order.Order;
 
 import java.util.Arrays;
 import java.util.List;

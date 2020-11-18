@@ -1,4 +1,4 @@
-package pl.jrkn87.junit;
+package pl.jrkn87.junit.account;
 
 public class Account {
     private boolean active;

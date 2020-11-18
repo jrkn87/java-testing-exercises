@@ -1,4 +1,4 @@
-package pl.jrkn87.junit;
+package pl.jrkn87.junit.extension;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;

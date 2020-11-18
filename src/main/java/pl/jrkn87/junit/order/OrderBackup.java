@@ -1,4 +1,6 @@
-package pl.jrkn87.junit;
+package pl.jrkn87.junit.order;
+
+import pl.jrkn87.junit.order.Order;
 
 import java.io.*;
 

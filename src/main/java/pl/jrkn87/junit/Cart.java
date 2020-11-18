@@ -1,5 +1,7 @@
 package pl.jrkn87.junit;
 
+import pl.jrkn87.junit.order.Order;
+
 import java.util.ArrayList;
 import java.util.List;
 

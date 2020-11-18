@@ -1,4 +1,4 @@
-package pl.jrkn87.junit;
+package pl.jrkn87.junit.extension;
 
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;

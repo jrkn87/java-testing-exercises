@@ -1,7 +1,10 @@
-package pl.jrkn87.junit;
+package pl.jrkn87.junit.account;
 
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import pl.jrkn87.junit.account.Account;
+import pl.jrkn87.junit.account.Address;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;

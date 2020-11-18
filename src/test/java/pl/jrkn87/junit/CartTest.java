@@ -3,6 +3,7 @@ package pl.jrkn87.junit;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pl.jrkn87.junit.order.Order;
 
 import java.time.Duration;
 
