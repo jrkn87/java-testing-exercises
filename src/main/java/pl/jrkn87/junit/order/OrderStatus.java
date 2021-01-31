@@ -1,5 +1,5 @@
 package pl.jrkn87.junit.order;
 
 public enum OrderStatus {
-    ORDERED, READY, DELIVERED
+    ORDERED, READY, DELIVERED, PREPARING, REJECTING
 }

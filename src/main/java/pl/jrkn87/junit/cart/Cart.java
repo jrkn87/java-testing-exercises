@@ -1,5 +1,6 @@
-package pl.jrkn87.junit;
+package pl.jrkn87.junit.cart;
 
+import pl.jrkn87.junit.Meal;
 import pl.jrkn87.junit.order.Order;
 
 import java.util.ArrayList;

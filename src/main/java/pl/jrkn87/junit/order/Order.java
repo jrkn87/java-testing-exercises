@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    private OrderStatus orderStatus;
     private List<Meal> meals = new ArrayList<>(0);
 
     public void addMealToOrder(Meal meal) {
@@ -22,6 +23,14 @@ public class Order {
 
     public void clearOrder() {
         this.meals.clear();
+    }
+
+    public void setOrderStatus(OrderStatus status) {
+        this.orderStatus = status;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
     }
 
     @Override

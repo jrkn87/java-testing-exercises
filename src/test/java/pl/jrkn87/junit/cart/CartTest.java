@@ -1,8 +1,9 @@
-package pl.jrkn87.junit;
+package pl.jrkn87.junit.cart;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pl.jrkn87.junit.cart.Cart;
 import pl.jrkn87.junit.order.Order;
 
 import java.time.Duration;
