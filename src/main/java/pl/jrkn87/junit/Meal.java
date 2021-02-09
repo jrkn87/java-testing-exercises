@@ -34,6 +34,10 @@ public class Meal {
         return name;
     }
 
+    public int sumPrice() {
+        return getPrice() * getQuantity();
+    }
+
     public int getDiscountedPrice(int discount) {
         if (discount > this.price)
             throw new IllegalArgumentException("Discount cannot  be higher than the price!");

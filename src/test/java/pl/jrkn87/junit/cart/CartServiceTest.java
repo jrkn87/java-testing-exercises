@@ -11,8 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
+import static org.mockito.BDDMockito.*;
 import static org.mockito.Mockito.*;
 
 class CartServiceTest {
@@ -155,5 +154,70 @@ class CartServiceTest {
         //then
         then(cartHandler).should().sendToPrepare(argumentCaptor.capture()); //BDD
         assertThat(argumentCaptor.getValue().getOrders().size(), equalTo(1));
+    }
+
+    @Test
+    void shouldDoNothingWhenProcessCart() {
+        //given
+        Order order = new Order();
+        Cart cart = new Cart();
+        cart.addOrderToCart(order);
+        CartHandler cartHandler = mock(CartHandler.class);
+        CartService cartService = new CartService(cartHandler);
+
+        given(cartHandler.canHandleCart(cart)).willReturn(true);
+
+        doNothing().when(cartHandler).sendToPrepare(cart);
+        willDoNothing().given(cartHandler).sendToPrepare(cart); //BDD
+        willDoNothing().willThrow(IllegalStateException.class).given(cartHandler).sendToPrepare(cart); //BDD
+
+        //when
+        cartService.processCart(cart);
+
+        //then
+        verify(cartHandler).sendToPrepare(cart);
+        then(cartHandler).should().sendToPrepare(cart); //BDD
+    }
+
+    @Test
+    void shouldAnswerWhenProcessCart() {
+        //given
+        Order order = new Order();
+        Cart cart = new Cart();
+        cart.addOrderToCart(order);
+        CartHandler cartHandler = mock(CartHandler.class);
+        CartService cartService = new CartService(cartHandler);
+
+        // 1.
+        doAnswer(invocationOnMock -> {
+            Cart argumetCart = invocationOnMock.getArgument(0);
+            argumetCart.clearCart();
+            return true;
+        }).when(cartHandler).canHandleCart(cart);
+        // 2.
+        when(cartHandler.canHandleCart(cart)).then(i -> {
+            Cart argumetCart = i.getArgument(0);
+            argumetCart.clearCart();
+            return true;
+        });
+        // 3. BDD
+        willAnswer(invocationOnMock -> {
+            Cart argumetCart = invocationOnMock.getArgument(0);
+            argumetCart.clearCart();
+            return true;
+        }).given(cartHandler).canHandleCart(cart);
+        // 4. BDD
+        given(cartHandler.canHandleCart(cart)).will(invocationOnMock -> {
+            Cart argumetCart = invocationOnMock.getArgument(0);
+            argumetCart.clearCart();
+            return true;
+        });
+
+        //when
+        cartService.processCart(cart);
+
+        //then
+        verify(cartHandler).sendToPrepare(cart);
+        then(cartHandler).should().sendToPrepare(cart); //BDD
     }
 }
